@@ -33,6 +33,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+/**
+ * * 修改数据库密码
+ * * 创建数据库
+ * * 创建表: t_order
+ * * 创建表 t_order_item
+ * * 广播表 t_address
+ */
 public final class ShardingDatabasesConfigurationPrecise implements ExampleConfiguration {
     
     @Override
@@ -52,7 +59,7 @@ public final class ShardingDatabasesConfigurationPrecise implements ExampleConfi
         result.getKeyGenerators().put("snowflake", new ShardingSphereAlgorithmConfiguration("SNOWFLAKE", getProperties()));
         return result;
     }
-    
+
     private static ShardingTableRuleConfiguration getOrderTableRuleConfiguration() {
         ShardingTableRuleConfiguration result = new ShardingTableRuleConfiguration("t_order");
         result.setKeyGenerateStrategy(new KeyGenerateStrategyConfiguration("order_id", "snowflake"));

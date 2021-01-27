@@ -15,28 +15,46 @@
  * limitations under the License.
  */
 
-package org.apache.shardingsphere.example.core.api;
+package entity;
 
-import com.zaxxer.hikari.HikariDataSource;
+import java.io.Serializable;
 
-import javax.sql.DataSource;
-
-public final class DataSourceUtil {
+public class User implements Serializable {
     
-    private static final String HOST = "localhost";
+    private static final long serialVersionUID = 263434701950670170L;
     
-    private static final int PORT = 3306;
+    private int userId;
     
-    private static final String USER_NAME = "gl";
+    private String userName;
     
-    private static final String PASSWORD = "123";
+    private String pwd;
     
-    public static DataSource createDataSource(final String dataSourceName) {
-        HikariDataSource result = new HikariDataSource();
-        result.setDriverClassName("com.mysql.jdbc.Driver");
-        result.setJdbcUrl(String.format("jdbc:mysql://%s:%s/%s?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8", HOST, PORT, dataSourceName));
-        result.setUsername(USER_NAME);
-        result.setPassword(PASSWORD);
-        return result;
+    public int getUserId() {
+        return userId;
+    }
+    
+    public void setUserId(final int userId) {
+        this.userId = userId;
+    }
+    
+    public String getUserName() {
+        return userName;
+    }
+    
+    public void setUserName(final String userName) {
+        this.userName = userName;
+    }
+    
+    public String getPwd() {
+        return pwd;
+    }
+    
+    public void setPwd(final String pwd) {
+        this.pwd = pwd;
+    }
+    
+    @Override
+    public String toString() {
+        return String.format("user_id: %d, user_name: %s, pwd: %s", userId, userName, pwd);
     }
 }

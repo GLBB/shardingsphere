@@ -15,28 +15,31 @@
  * limitations under the License.
  */
 
-package org.apache.shardingsphere.example.core.api;
+package entity;
 
-import com.zaxxer.hikari.HikariDataSource;
+import java.io.Serializable;
 
-import javax.sql.DataSource;
-
-public final class DataSourceUtil {
+public class Address implements Serializable {
     
-    private static final String HOST = "localhost";
+    private static final long serialVersionUID = 661434701950670670L;
     
-    private static final int PORT = 3306;
+    private Long addressId;
     
-    private static final String USER_NAME = "gl";
+    private String addressName;
     
-    private static final String PASSWORD = "123";
+    public Long getAddressId() {
+        return addressId;
+    }
     
-    public static DataSource createDataSource(final String dataSourceName) {
-        HikariDataSource result = new HikariDataSource();
-        result.setDriverClassName("com.mysql.jdbc.Driver");
-        result.setJdbcUrl(String.format("jdbc:mysql://%s:%s/%s?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8", HOST, PORT, dataSourceName));
-        result.setUsername(USER_NAME);
-        result.setPassword(PASSWORD);
-        return result;
+    public void setAddressId(final Long addressId) {
+        this.addressId = addressId;
+    }
+    
+    public String getAddressName() {
+        return addressName;
+    }
+    
+    public void setAddressName(final String addressName) {
+        this.addressName = addressName;
     }
 }
